@@ -17,7 +17,7 @@ func TestSyncIdempotency(t *testing.T) {
 }
 
 func TestSynchrony(t *testing.T) {
-	rng := (rand.NewSource(time.Now().UnixNano()))
+	rng := Synchronize(rand.NewSource(time.Now().UnixNano()))
 	ch := make(chan int64, 1024)
 	for i := 0; i < 10000; i++ {
 		go func() { ch <- rng.Int63() }()
